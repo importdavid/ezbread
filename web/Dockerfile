@@ -1,4 +1,4 @@
-FROM python:alpine3.7
+FROM python
 COPY . /app
 WORKDIR /app
 RUN sh chrome_install.sh
