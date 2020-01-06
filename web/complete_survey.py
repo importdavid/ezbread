@@ -6,6 +6,14 @@ def complete_survey(code):
     driver = webdriver.Firefox()
     driver.get(URL)
 
+    # UNCOMMENT this block to run on Linux with Chrome headless, turn off above block
+    # URL = 'https://marcoscsatsurvey.survey.marketforce.com/?languageId=1&sc='
+    # chrome_options = webdriver.ChromeOptions()
+    # chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--no-sandbox')
+    # driver = webdriver.Chrome(chrome_options=chrome_options)
+    # driver.get(URL)
+
     # First Page
     elem = driver.find_element_by_id('sc-timeofvisit')
     elem.send_keys(code[0:4])
