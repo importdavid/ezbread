@@ -2,17 +2,17 @@ from selenium import webdriver
 # from selenium.webdriver.common.keys import Keys
 
 def complete_survey(code):
-    URL = 'https://marcoscsatsurvey.survey.marketforce.com/?languageId=1&sc='
-    driver = webdriver.Firefox()
-    driver.get(URL)
+    # URL = 'https://marcoscsatsurvey.survey.marketforce.com/?languageId=1&sc='
+    # driver = webdriver.Firefox()
+    # driver.get(URL)
 
     # UNCOMMENT this block to run on Linux with Chrome headless, turn off above block
-    # URL = 'https://marcoscsatsurvey.survey.marketforce.com/?languageId=1&sc='
-    # chrome_options = webdriver.ChromeOptions()
-    # chrome_options.add_argument('--headless')
-    # chrome_options.add_argument('--no-sandbox')
-    # driver = webdriver.Chrome(chrome_options=chrome_options)
-    # driver.get(URL)
+    URL = 'https://marcoscsatsurvey.survey.marketforce.com/?languageId=1&sc='
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    driver = webdriver.Chrome(chrome_options=chrome_options)
+    driver.get(URL)
 
     # First Page
     elem = driver.find_element_by_id('sc-timeofvisit')
@@ -188,6 +188,8 @@ def complete_survey(code):
     print(coupon)
     print(f'TellCode: {tellcode}')
     driver.close()
+
+    return coupon, tellcode
 
 
 if __name__ == '__main__':
