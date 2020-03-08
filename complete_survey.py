@@ -2,16 +2,17 @@ from selenium import webdriver
 # from selenium.webdriver.common.keys import Keys
 
 def complete_survey(code):
-    # URL = 'https://marcoscsatsurvey.survey.marketforce.com/?languageId=1&sc='
+    URL = 'https://marcoscsatsurvey.survey.marketforce.com/?languageId=1&sc='
+
+    # COMMENT out block for headless (for visible testing)
     # driver = webdriver.Firefox()
     # driver.get(URL)
 
     # UNCOMMENT this block to run on Linux with Chrome headless, turn off above block
-    URL = 'https://marcoscsatsurvey.survey.marketforce.com/?languageId=1&sc='
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
-    driver = webdriver.Chrome(chrome_options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
     driver.get(URL)
 
     # First Page
@@ -182,10 +183,10 @@ def complete_survey(code):
 
     # Final Page
     coupon = driver.find_element_by_css_selector('.main-content > section:nth-child(1) > h2:nth-child(1) > p:nth-child(1) > span:nth-child(7) > span:nth-child(1)')
-    coupon = coupon.text
+    coupon = coupon.text.split()[-1] # Ex. "Coupon Code: 123456789012"
     tellcode = driver.find_element_by_css_selector('.main-content > section:nth-child(1) > h2:nth-child(1) > p:nth-child(2) > span:nth-child(2) > span:nth-child(1)')
     tellcode = tellcode.text
-    print(coupon)
+    print(f'Coupon Code: {coupon}')
     print(f'TellCode: {tellcode}')
     driver.close()
 
