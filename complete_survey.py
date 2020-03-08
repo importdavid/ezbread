@@ -16,6 +16,7 @@ def complete_survey(code):
     driver.get(URL)
 
     # First Page
+    code = str(code) # make sure code is subscriptable
     elem = driver.find_element_by_id('sc-timeofvisit')
     elem.send_keys(code[0:4])
     elem = driver.find_element_by_id('sc-storenum')
